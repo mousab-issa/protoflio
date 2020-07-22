@@ -1,0 +1,114 @@
+<div id="Portfolio" class="container-fluid my-4 ">
+    <div class="row justify-content-center">
+        <!-- new container -->
+        <div class=" col-12 col-md-10 shadow-lg p-3 bg-white my-4 rounde">
+
+            <div class="row justify-content-center">
+                <% if (projects.length > 0) { %>
+                <% projects.map((project)=>{  %>
+                <div class="project col-12 col-md-3 mb-3 shadow-lg mx-2 ">
+                    <div class="row my-2 justify-content-center">
+                        <h1 class="text-light"><%= project.title%> </h1>
+                    </div>
+                    <div class="row my-2 justify-content-center">
+                        <p class="text-light"><%= project.description%> </p>
+                    </div>
+                    <div class="row my-2 justify-content-center">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#<%=project.title%>">
+                            Project details
+                        </button>
+
+                        <%if (isAuthinticated){%>
+                        <form action="/delete-project" method="POST">
+                            <input type="hidden" name="projectId" value="<%=project._id%>">
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <button type="submit" class="btn btn-danger mx-2">Delete Project</button>
+                        </form>
+                        <%}%>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="<%=project.title%>" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="<=%project.title>"> <%= project.title%>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <%= project.description%>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <% }) %>
+            <% } else { %>
+            <h1>No projects Found!</h1>
+            <% } %>
+        </div>
+
+        <div class="offset-10 row justify-content-center">
+            <%if (isAuthinticated){%>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+                Add a Project
+            </button>
+
+            <%}%>
+                <!-- Add project -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Project Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form action="/add-project" method="POST">
+                                    <div class="form-group">
+                                        <label for="title">title</label>
+                                        <input type="title" class="form-control" name="title"
+                                            placeholder="Good project">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Description">Description</label>
+                                        <textarea class="form-control" id="description" rows="3"
+                                            name="description"></textarea>
+                                    </div>
+                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Add a project</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+</div>
+
+</div>

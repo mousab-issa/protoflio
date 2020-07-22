@@ -1,0 +1,65 @@
+html {
+    scroll-behavior: smooth;
+    
+}
+body{
+  font-family: 'Roboto', sans-serif;
+  color: black;
+}
+.fa {
+    margin: 10px;
+    font-size: 25px;
+    color: gray;
+    text-decoration: none;
+  }
+  
+  .fa:hover {
+    text-decoration: none;
+    opacity: 0.2;
+  }
+
+.carousel-indicators li {
+    background-color: #39B4CC;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+  }
+  
+  
+footer {
+    background-color: #563e91;
+  }
+  
+  footer .footer-copyright {
+    background-color: #4c3e6d;
+    font-size: 17px;
+  }
+  
+  footer .btn {
+    width: 60px;
+    height: 60px;
+    padding: 7px 10px;
+    border-radius: 40px;
+    font-size: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 4px #000000;
+  }
+  
+  footer .btn-instagram {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+  }
+  
+  footer .f-s {
+    font-size: 25px;
+  }
+  
+  footer .rotate:hover .fa {
+    transform: rotate(360deg);
+    transition: .3s ease-in-out;
+  }
+
+  

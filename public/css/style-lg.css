@@ -1,0 +1,84 @@
+
+
+/*
+large laptop and desktop screens 
+change the jumbotran background image for a phone changes
+*/
+@media screen and (min-width: 1200px)  {
+    /* error page */
+    .error-template {
+        padding: 40px 15px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .error-actions {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .error-actions .btn {
+        margin-right: 10px;
+    }
+    
+    /* error page */
+    
+    .navbar-light {
+        background: transparnt;
+    }
+    .navbar {
+        min-height: 70px;
+        transition: .5s all ease;
+      }
+      .navbar .nav-link {
+               font-size: 1.2em;
+
+      }
+    .scrolled .navbar {
+        min-height: 50px;
+      }
+    .scrolled .navbar {
+        background: #282E7C;
+        transition: .5s all ease;
+    }
+    .scrolled .navbar .nav-link {
+        color: white;
+        transition: .2s all ease;
+    }
+  
+      
+      
+    .jumbotron {
+        padding: 70px 30px 70px 30px;
+        margin: 0px auto;
+        background-image: url("/img/Bg-lg.svg");
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        /* background-attachment: fixed; */
+        background-color: white;
+        height: 100vh;
+    }
+    
+    
+    .intro-text {
+        color: black;
+        font-family: 'Roboto', sans-serif;
+        font-size: 5em;
+    }
+    
+    .intro-description {
+        font-size: 2em;
+        color: #C0C0C9;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .project{
+        background-color: rebeccapurple;
+        background-size: auto;
+        background-repeat: no-repeat;
+
+    }
+            
+    }
+    

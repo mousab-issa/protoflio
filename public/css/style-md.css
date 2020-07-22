@@ -1,0 +1,48 @@
+
+/*
+laptop screens 
+change the jumbotran background image for a phone changes
+*/
+@media screen and (min-width:  991.98px) and (max-width:1200px) {
+
+    
+    .navbar {
+        min-height: 70px;
+
+      }
+    .scrolled .navbar {
+        min-height: 50px;
+        transition: .5s all ease;
+      }
+    .scrolled .navbar {
+        background: #282E7C;
+        transition: .5s all ease;
+    }
+    .scrolled .navbar .nav-link {
+        color: white;
+        transition: .2s all ease;
+    }
+    .jumbotron {
+        padding: 70px 30px 70px 30px;
+        margin: 0px auto;
+        background-image: url("/img/Bg-md.svg");
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        /* background-attachment: fixed; */
+        background-color: white;
+        height: 100vh;
+    }   
+    .intro-text {
+        color: black;
+        font-family: 'Roboto', sans-serif;
+        font-size: 3.5em;
+    }
+    
+    .intro-description {
+        font-size: 1.4em;
+        color: #C0C0C9;
+        font-family: 'Roboto', sans-serif;
+    }
+}
+
