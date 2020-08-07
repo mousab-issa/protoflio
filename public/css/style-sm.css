@@ -5,7 +5,7 @@ change the jumbotran background image for a phone changes
 */
 @media screen and (min-width: 767.98px) and (max-width: 991.97px) {
     .navbar-light {
-        background: #7174d3;
+        background: #43236e;
     }
     .jumbotron {
         padding: 70px 30px 70px 30px;
@@ -20,15 +20,14 @@ change the jumbotran background image for a phone changes
     }   
     .intro-text {
         margin-top: 20px;
-        color: black;
+        color: white;
         font-family: 'Roboto', sans-serif;
-        font-size: 3em;
+        font-size: 4em;
     }
-    
-    .intro-description {
-        font-size: 1.2em;
-        color: #C0C0C9;
-        font-family: 'Roboto', sans-serif;
+    .sub-intro {
+        font-family: 'Play', sans-serif;
+        text-decoration: bold;
+        font-size: 1.9em;
     }
     
         

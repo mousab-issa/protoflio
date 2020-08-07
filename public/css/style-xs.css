@@ -20,18 +20,20 @@ change the jumbotran background image for a phone changes
         height: 100vh;
     }   
 
-    .intro-text {
+  .intro-text {
         margin-top: 20px;
         color: black;
         font-family: 'Roboto', sans-serif;
         font-size: 4em;
     }
-    
-    .intro-description {
-        font-size: 1.5em;
-        color: #C0C0C9;
-        font-family: 'Roboto', sans-serif;
+    .sub-intro {
+        font-family: 'Play', sans-serif;
+        text-decoration: bold;
+        color: black;
+        font-size: 1.9em;
     }
+    
+ 
 
 }
 

@@ -1,27 +1,37 @@
-
 /*
 laptop screens 
 change the jumbotran background image for a phone changes
 */
-@media screen and (min-width:  991.98px) and (max-width:1200px) {
+@media screen and (min-width: 991.98px) and (max-width:1366px) {
 
-    
+
     .navbar {
         min-height: 70px;
-
-      }
-    .scrolled .navbar {
-        min-height: 50px;
         transition: .5s all ease;
-      }
+
+    }
+
+    .navbar .nav-link {
+        font-size: 1.2em;
+
+    }
+
     .scrolled .navbar {
-        background: #282E7C;
+        min-height: 30px;
         transition: .5s all ease;
     }
+
+    .scrolled .navbar {
+        background: #43236e;
+        transition: .5s all ease;
+    }
+
+
     .scrolled .navbar .nav-link {
         color: white;
         transition: .2s all ease;
     }
+
     .jumbotron {
         padding: 70px 30px 70px 30px;
         margin: 0px auto;
@@ -32,17 +42,28 @@ change the jumbotran background image for a phone changes
         /* background-attachment: fixed; */
         background-color: white;
         height: 100vh;
-    }   
-    .intro-text {
-        color: black;
-        font-family: 'Roboto', sans-serif;
-        font-size: 3.5em;
     }
-    
-    .intro-description {
-        font-size: 1.4em;
-        color: #C0C0C9;
-        font-family: 'Roboto', sans-serif;
+
+    .intro-text {
+        color: white;
+        font-family: 'Fredoka One', cursive;
+        font-size: 4em;
+
+    }
+
+    .sub-intro {
+        font-family: 'Play', sans-serif;
+        text-decoration: bold;
+        font-size: 1.9em;
+    }
+
+    .sec-header {
+        color: rgb(31, 7, 51);
+        font-family: 'Chivo', sans-serif;
+        font-size: 3em;
+    }
+    .sub-header{
+        color: rgb(133, 75, 180);
+
     }
 }
-

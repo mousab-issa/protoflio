@@ -1,89 +1,111 @@
-   <!-- login Modal -->
-   <div class="modal fade" id="Loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-       aria-hidden="true">
-       <div class="modal-dialog" role="document">
-           <div class="modal-content">
-               <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                   </button>
-               </div>
-               <form action="/login" method="POST">
-                   <div class="modal-body">
+<%- include('../include/header.ejs')%>
 
-                       <div class="form-group">
-                           <label for="exampleInputEmail1">Email address</label>
-                           <input name="email" type="email" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Enter email">
-                           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+<!-- login Modal -->
+<div class="modal fade" id="Loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/login" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="email" type="email" class="form-control " id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input name="password" type="password" class="form-control" id="exampleInputPassword1"
+                            placeholder="Password">
+                        <a href="/rest-password">reset my password</a>
+                    </div>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-primary   ">Login </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- sign up Modal -->
+<div class="modal fade" id="signumodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/signup" method="POST" novalidate>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="email" type="email"
+                            class="form-control <%=errors&&validationError.some(e=>e.param=='email')&&type==='signup'?'is-invalid':''%>"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <%if(errors &&validationError.some(e=>e.param=='email')&&type==='signup'){%>
+                        <div class="invalid-feedback">
+                            Please have a correct Email.
+                        </div>
+                        <%}%>
+                           <small id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone
                                else.</small>
                        </div>
                        <div class="form-group">
                            <label for="exampleInputPassword1">Password</label>
-                           <input name="password" type="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Password">
-                            <a href="/rest-password">reset my password</a>
-                       </div>
-                       <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                   </div>
-                   <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                       <button type="submit" class="btn btn-outline-primary   ">Login </button>
-                   </div>
-               </form>
-           </div>
-       </div>
-   </div>
-
-   <!-- sign up Modal -->
-   <div class="modal fade" id="signumodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-       aria-hidden="true">
-       <div class="modal-dialog" role="document">
-           <div class="modal-content">
-               <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                   </button>
-               </div>
-               <form action="/signup" method="POST">
-                   <div class="modal-body">
-
-                       <div class="form-group">
-                           <label for="exampleInputEmail1">Email address</label>
-                           <input name="email" type="email" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Enter email">
-                           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                               else.</small>
-                       </div>
-                       <div class="form-group">
-                           <label for="exampleInputPassword1">Password</label>
-                           <input name="password" type="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Password">
+                           <input name="password" type="password" class="form-control <%=errors&&validationError.some(e=>e.param=='password')&&type==='signup'?'is-invalid':''%>"
+                        id="exampleInputPassword1"
+                        placeholder="Password">
+                        <%if(errors &&validationError.some(e=>e.param=='password')&&type==='signup'){%>
+                        <div class="invalid-feedback">
+                            password has to be at least 8 char
+                        </div>
+                        <%}%>
                        </div>
                        <div class="form-group">
                            <label for="exampleInputPassword1">Confirm password</label>
-                           <input name="Confirmedpassword" type="password" class="form-control"
-                               id="exampleInputPassword1" placeholder="Password">
+                           <input name="Confirmedpassword" type="password"class="form-control <%=errors&&validationError.some(e=>e.param=='Confirmedpassword')&&type==='signup'?'is-invalid':''%>"
+                        id="exampleInputPassword1" placeholder="Password">
+                        <%if(errors &&validationError.some(e=>e.param=='Confirmedpassword')&&type==='signup'){%>
+                        <div class="invalid-feedback">
+                            passwords do not match
+                        </div>
+                        <%}%>
                        </div>
                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-primary   ">signup </button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-                   </div>
-                   <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                       <button type="submit" class="btn btn-outline-primary   ">signup </button>
-                   </div>
-               </form>
-           </div>
-       </div>
-   </div>
+<%if(errors &&type==="signup") {%>
+<script>
+    $('#signumodal').modal('show');
+</script>
+<%}%>
 
    <div class="navb">
 
        <nav class="navbar fixed-top navbar-expand-lg navbar-light ">
-           <a class="navbar-brand mr-auto" href="/"><img src="/img/brand.png" width="100"></a>
+           <a class="navbar-brand mr-auto" href="/"><img src="/img/brand4.png" width="100"></a>
 
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,67 +115,61 @@
            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav mr-auto mx-5">
                    <li class="nav-item ">
-                       <a class="nav-link" href="#home">HOME <span class="sr-only">(current)</span></a>
+                       <a class="nav-link " href="#home">HOME <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item ">
-                       <a class="nav-link" href="#about">EXPERINCE </a>
+                       <a class="nav-link  " href="#binfo">BASIC INFO </a>
                    </li>
                    <li class="nav-item ">
-                       <a class="nav-link" href="#education">EDUCTION </a>
+                       <a class="nav-link " href="#experince">EXPERINCE </a>
                    </li>
                    <li class="nav-item ">
-                       <a class="nav-link" href="#skills">PROFESSIONAL SKILLS </a>
+                       <a class="nav-link  " href="#Portfolio">PROTOFOLIO</a>
                    </li>
                    <li class="nav-item ">
-                       <a class="nav-link" href="#recommendation">REFERENCES </a>
+                       <a class="nav-link  " href="#skills">PROFESSIONAL SKILLS </a>
                    </li>
                    <li class="nav-item ">
-                       <a class="nav-link" href="#Portfolio">PROTOFOLIO</a>
+                       <a class="nav-link  " href="#recommendation">REFERENCES </a>
                    </li>
                    <li class="nav-item ">
-                       <a class="nav-link" href="#Contact">CONTACT</a>
+                       <a class="nav-link  " href="#contact">CONTACT</a>
                    </li>
                </ul>
 
+            <div class="d-none d-md-block  ">
+                <a href="/resume">
+                <div class="ui inverted button vertical animated   " tabindex="0">
+                    <div class="visible content">Download My Resume</div>
+                        <div class="hidden content">
+                            <i class=" arrow down icon"></i>
+                        </div>
+                    </div>
+                </a>
 
-
-               <div class="ui vertical animated inverted violet large button" tabindex="0">
-                   <div class="visible content">Download My Resume</div>
-                   <div class="hidden content">
-                       <i class="arrow down icon"></i>
-                   </div>
-               </div>
-
-
-               <a href="#" class="fa fa-facebook"></a>
-               <a href="#" class="fa fa-twitter"></a>
-               <a href="#" class="fa fa-linkedin"></a>
-               <a href="#" class="fa fa-instagram"></a>
+            </div>
+                
+              
 
                <% if (isAuthinticated){%>
-               <form action="/logout" method="POST">
-                   <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                <form action="/logout" method="POST">
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
 
-                   <button type="submit" class="btn btn-outline-primary mx-2 ">Logout </button>
-               </form>
-               <%}else{%>
+                    <button type="submit" class="btn btn btn-colour-1 mx-2 mx-2 ">Logout </button>
+                </form>
+                <%}else{%>
 
-               <!-- Button trigger modal -->
-               <button type="button" class="btn btn-outline-primary mx-2 " data-toggle="modal"
-                   data-target="#Loginmodal">
-                   Login
-               </button>
+                <!-- Button trigger modal -->
+                <button type="button" class="ui inverted button mx-2 " data-toggle="modal" data-target="#Loginmodal">
+                    Login
+                </button>
 
-               <button type="button" class="btn btn-outline-primary mx-2 " data-toggle="modal"
-                   data-target="#signumodal">
-                   signup
-               </button>
-               <%}%>
+                <!-- <button type="button" class="btn btn btn-colour-1 mx-2  mx-2 " data-toggle="modal" data-target="#signumodal">
+                    signup
+                </button> -->
+                <%}%>
 
+        </div>
+</nav>
 
-
-
-           </div>
-       </nav>
-
-   </div>
+</div>   

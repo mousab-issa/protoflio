@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
@@ -22,11 +23,14 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.6.0",
     "font-awesome": "^4.7.0",
+    "install": "^0.13.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.21",
+    "multer": "^1.4.2",
     "nodemailer": "^6.4.10",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.4",
+    "pdfkit": "^0.11.0",
     "semantic-ui": "^2.4.2"
   }
 }

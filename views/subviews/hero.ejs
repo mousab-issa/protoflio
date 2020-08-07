@@ -1,13 +1,20 @@
-<header id="home" class="jumbotron d-flex justify-content-center align-items-start">
-    <div class="container  justify-content-center ">
-        <div class="row justify-content-center">
-            <h1 class="intro-text ">Hi, I'm <span> Mousab ALhamada</span></h1>
+<header id="home" class="jumbotron d-flex ">
+    <div class="container-fluid align-items-center d-flex align-items-center" >
+        <div class="row" >
+            <div class=" offset-1 col-lg-9 col-md-9" >
+                <h3 class="sub-intro">Hello, I Am <ins> MOUSAB</ins>  </h3>
+                <h1 class="intro-text  "> I AM A FULL-STACK DEVELOPER </h1>
+                
+            </div>
+            
+       
         </div>
-
-        <div class="row justify-content-center">
-            <h1 class="intro-description">I am a full-stack developer </h1>
-        </div>
+       
+       
     </div>
+
+
+
     <% if(messages){%>
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
@@ -19,7 +26,7 @@
             </button>
         </div>
         <div class="toast-body">
-            <%=messages%>
+            <%= errors &&type?messages.msg:messages%>
         </div>
     </div>
     <script>

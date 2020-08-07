@@ -1,53 +1,58 @@
-
-
 /*
 large laptop and desktop screens 
 change the jumbotran background image for a phone changes
 */
-@media screen and (min-width: 1200px)  {
+@media screen and (min-width: 1367px) {
+
     /* error page */
     .error-template {
         padding: 40px 15px;
         text-align: center;
         margin-top: 20px;
     }
-    
+
     .error-actions {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    
+
     .error-actions .btn {
         margin-right: 10px;
     }
-    
+
     /* error page */
-    
+
     .navbar-light {
         background: transparnt;
     }
+
     .navbar {
         min-height: 70px;
         transition: .5s all ease;
-      }
-      .navbar .nav-link {
-               font-size: 1.2em;
+    }
 
-      }
+    .navbar .nav-link {
+        color: white;
+        font-size:1.8em;
+
+    }
+
     .scrolled .navbar {
         min-height: 50px;
-      }
+    }
+
     .scrolled .navbar {
-        background: #282E7C;
+        background: #43236e;
         transition: .5s all ease;
     }
+
     .scrolled .navbar .nav-link {
-        color: white;
+        color: black;
         transition: .2s all ease;
     }
-  
-      
-      
+
+
+
     .jumbotron {
         padding: 70px 30px 70px 30px;
         margin: 0px auto;
@@ -59,26 +64,24 @@ change the jumbotran background image for a phone changes
         background-color: white;
         height: 100vh;
     }
-    
-    
+
+
     .intro-text {
         color: black;
         font-family: 'Roboto', sans-serif;
-        font-size: 5em;
+        font-size: 7em;
     }
-    
-    .intro-description {
-        font-size: 2em;
-        color: #C0C0C9;
-        font-family: 'Roboto', sans-serif;
-    }
-    
-    .project{
-        background-color: rebeccapurple;
-        background-size: auto;
-        background-repeat: no-repeat;
 
+    .sub-intro {
+        font-family: 'Roboto', sans-serif;
+        font-size: 3em;
     }
-            
+
+    .sec-header{
+        color: black;
+        font-family: 'Roboto', sans-serif;
+        font-size:4em;
     }
-    
+
+ 
+}

@@ -1,114 +1,191 @@
-<div id="Portfolio" class="container-fluid my-4 ">
-    <div class="row justify-content-center">
+    <div id="Portfolio" class="row justify-content-center my-5" >
         <!-- new container -->
-        <div class=" col-12 col-md-10 shadow-lg p-3 bg-white my-4 rounde">
+        <div class="col-12 col-md-10  my-4 pb-3 rounde bg-white">
+            <div class="row justify-content-center mb-4 p-2">
+                <div class="container">
+                    <div class="row justify-content-center ">
+                        <h5 class="sub-header">	PORTFOLIO</h5>
+                    </div>
+                    <div class="row justify-content-center ">
+                        <h1 class="sec-header">Creative Works </h1>
+                    </div>
+                </div>
+            </div>
 
             <div class="row justify-content-center">
                 <% if (projects.length > 0) { %>
                 <% projects.map((project)=>{  %>
-                <div class="project col-12 col-md-3 mb-3 shadow-lg mx-2 ">
-                    <div class="row my-2 justify-content-center">
-                        <h1 class="text-light"><%= project.title%> </h1>
-                    </div>
-                    <div class="row my-2 justify-content-center">
-                        <p class="text-light"><%= project.description%> </p>
-                    </div>
-                    <div class="row my-2 justify-content-center">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#<%=project.title%>">
-                            Project details
-                        </button>
-
-                        <%if (isAuthinticated){%>
-                        <form action="/delete-project" method="POST">
+                <div class="card shadow-lg m-2">
+                    <img class="card-img-top" src="/<%=project.imgUrl%>" alt="Card image cap"
+                        style="width: 300px; height:250px;">
+                    <div class="card-body">
+                        <h2 class="card-title"><%= project.title%></h2>
+                        <h3 class="card-text"><%= project.description%></h3>
+                        <div class="row justify-content-center">
+                            <button type="button" class="btn btn-primary mx-2 text-white" data-toggle="modal"
+                                data-target="#<%=project.title%>">
+                                Project details
+                            </button>
+                            <%if (isAuthinticated){%>
                             <input type="hidden" name="projectId" value="<%=project._id%>">
                             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                            <button type="submit" class="btn btn-danger mx-2">Delete Project</button>
-                        </form>
-                        <%}%>
-
+                            <button type="button" class="btn btn-danger mx-2" onclick="deleteElemnet(this)">Delete
+                                Project</button>
+                            <%}%>
+                        </div>
+                    </div>
+                      </div>
+                    
                         <!-- Modal -->
                         <div class="modal fade" id="<%=project.title%>" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="<=%project.title>"> <%= project.title%>
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <%= project.description%>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="<=%project.title>"><%= project.title%>
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <%= project.description%>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-colour-1 mx-2 text-white">View the
+                                            Demo</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <% }) %>
+                        <script>
+                            const deleteElemnet = (btn) => {
+                                const projectId = btn.parentNode.querySelector('[name=projectId]').value;
+                                const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
+                                const element = btn.parentNode.parentNode.parentNode;
+                                console.log(element)
+                                fetch('/projects/' + projectId, {
+                                    method: 'DELETE',
+                                    headers: {
+                                        'csrf-token': csrf
+                                    }
+                                }).then(result => {
+                                    console.log(result)
+                                    element.remove();
+                                }).catch(err => {
+                                    console.log(err)
+                                })
+                            }
+                        </script>
+                        <% } 
+                        else { %>
+                        <h1>No projects Found!</h1>
+                        <% } %>
                     </div>
 
+                    <div class="row justify-content-center my-3 ">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination ">
+                                <li class="page-item <%= !hasprevious ? 'disabled' :''%>">
+                                    <a class="page-link" href="?page=<%=previousPage%>">Previous</a>
+                                </li>
+                                <% if(currentPage!==1 && previousPage!==1){%>
+                                <li class="page-item ">
+                                    <a class="page-link" href="?page=1">1 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <%} %>
+                                <%if(hasprevious){%>
+                                <li class="page-item ">
+                                    <a class="page-link" href="?page=<%=previousPage%>"><%=previousPage%> <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <%}%>
+                                <%if(currentPage){%>
+                                <li class="page-item active">
+                                    <a class="page-link" href="?page=<%=currentPage%>"><%=currentPage%> <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <%}%>
+                                <% if(hasnext){%>
+                                <li class="page-item ">
+                                    <a class="page-link" href="?page=<%=nextPage%>"><%=nextPage%> <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <%}%>
+                                <% if(lastPage!==nextPage &&lastPage!==currentPage){%>
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                                <%}%>
+                                <% if(lastPage!==nextPage &&lastPage!==currentPage){%>
+                                <li class="page-item  ">
+                                    <a class="page-link" href="?page=<%=lastPage%>"><%=lastPage%> <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <%}%>
+                                <li class="page-item <%= !hasnext ? 'disabled' :''%>"">
+                                <a class="page-link" href="?page=<%=nextPage%>">Next</a>
+                                </li>
+                                <li class="page-item">
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="offset-10 row justify-content-center">
+                        <%if (isAuthinticated){%>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#AddProject">
+                            Add a Project
+                        </button>
+
+                        <%}%>
+                    <!-- Add project -->
+                            <div class="modal fade" id="AddProject" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Project Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                    
+                                                <div class="modal-body">
+                                                    <form action="/add-project" method="POST" enctype="multipart/form-data">
+                                                        <div class="form-group">
+                                                            <label for="title">title</label>
+                                                            <input type="title" class="form-control" name="title"
+                                                                placeholder="Good project">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="image">Project Image</label>
+                                                            <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+                                                        </div>
+                    
+                                                        <div class="form-group">
+                                                            <label for="Description">Description</label>
+                                                            <textarea class="form-control" id="description" rows="3"
+                                                                name="description"></textarea>
+                                                        </div>
+                                                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">Add a project</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </form>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
-            <% }) %>
-            <% } else { %>
-            <h1>No projects Found!</h1>
-            <% } %>
         </div>
 
-        <div class="offset-10 row justify-content-center">
-            <%if (isAuthinticated){%>
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
-                Add a Project
-            </button>
 
-            <%}%>
-                <!-- Add project -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Project Details</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-
-                            <div class="modal-body">
-                                <form action="/add-project" method="POST">
-                                    <div class="form-group">
-                                        <label for="title">title</label>
-                                        <input type="title" class="form-control" name="title"
-                                            placeholder="Good project">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="Description">Description</label>
-                                        <textarea class="form-control" id="description" rows="3"
-                                            name="description"></textarea>
-                                    </div>
-                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success">Add a project</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </form>
-
-            </div>
-
-        </div>
     </div>
-</div>
-</div>
 
-</div>
-</div>
-
-
-
-</div>
-
-</div>
+    </div>
+    </div>

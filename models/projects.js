@@ -10,7 +10,7 @@ const projectSchema=new Schema({
         type:String,
         required:true
     },
-    img:{
+    imgUrl:{
         type:String
     },
     userId:{
